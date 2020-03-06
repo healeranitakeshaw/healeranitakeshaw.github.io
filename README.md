@@ -1,2 +1,2 @@
 # Healer Anita Keshaw
-Website https://tinyurl.com/healeranitakeshaw
+Website https://healeranitakeshaw.com
