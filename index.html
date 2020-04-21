@@ -62,7 +62,6 @@ img.photo {
 #latestvideo {
   border-radius: 2%;
   border: 1.2px solid lightgray;
-  width: 570px;
   padding: 0px;
 }
 #latestvideotitle {
@@ -120,6 +119,23 @@ li {
 #scroll_button:hover {
     color: #b15fb3;
 }
+
+/* source: https://fettblog.eu/blog/2013/06/16/preserving-aspect-ratio-for-embedded-iframes/ */
+.iframecontainer {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+}
+
+.iframecontainer iframe {
+    border: 0px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-width: 100%;
+    max-height: 100%;
+}
 </style>
 </head>
 <body>
@@ -131,10 +147,10 @@ li {
   <div class="w3-xlarge">Healer · Yogini · Lifecoach</div>
 </div>
 <br>
-<div class="w3-card w3-padding-24 paddingbottom32" id="contact">
+<div class="w3-card w3-padding-24 paddingbottom32">
   <div class="w3-xxlarge">Latest Video</div><br>
-  <div class="w3-large fontgrey">
-    <iframe id="latestvideo" width="600" height="400" frameborder="0" allowfullscreen></iframe>
+  <div class="w3-large fontgrey" style='max-width: 570px;'>
+    <div class='iframecontainer'><iframe id="latestvideo" width="800" height="600" frameborder="0" allowfullscreen></iframe></div>
     <div id='latestvideotitle'></div>
     <br>
     <a href="https://www.youtube.com/channel/UCb1gNzGJqls5borB6EApcDg/videos">More videos</a>
