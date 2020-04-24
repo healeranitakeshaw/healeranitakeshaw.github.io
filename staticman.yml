@@ -1,5 +1,5 @@
 # based on https://github.com/eduardoboucas/staticman/blob/master/staticman.sample.yml
-comments:
+testimonials:
   allowedFields: ["name", "email", "message"]
   branch: "master"
   commitMessage: "Add new testimonial"
