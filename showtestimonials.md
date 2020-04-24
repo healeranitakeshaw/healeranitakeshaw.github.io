@@ -7,6 +7,6 @@ layout: null
   {% assign date = testimonial[1].date %}
   {% assign message = testimonial[1].message %}
   {{ name }}<br>
-  {{ date }}<br>
+  {{ date | date: '%a %-d %b %Y @%H:%M' }}<br>
   {{ message }}<br>
 {% endfor %}
