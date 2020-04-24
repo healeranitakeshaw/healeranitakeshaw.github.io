@@ -1,0 +1,12 @@
+---
+layout: null
+---
+{% assign testimonials = site.data.testimonials sort %}
+{% for testimonial in testimonials %}
+  {% assign name = testimonial[1].name %}
+  {% assign date = testimonial[1].date %}
+  {% assign message = testimonial[1].message %}
+  {{ name }}<br>
+  {{ date }}<br>
+  {{ message }}<br>
+{% endfor %}
