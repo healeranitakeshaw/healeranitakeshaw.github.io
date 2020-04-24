@@ -3,7 +3,7 @@ testimonials:
   allowedFields: ["name", "email", "message"]
   branch: "master"
   commitMessage: "Add new testimonial"
-  filename: "entry{@timestamp}"
+  filename: "testimonial-{@timestamp}"
   format: "yaml"
   generatedFields:
     date:
