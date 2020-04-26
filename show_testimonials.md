@@ -1,8 +1,8 @@
 ---
 layout: null
 ---
-{% assign testimonials = site.data.testimonials %}
-{% for testimonial in testimonials %}
+{% assign testimonials = site.data.testimonials | sort: date %}
+{% for testimonial in testimonials reversed %}
   {% assign name = testimonial[1].name %}
   {% assign date = testimonial[1].date %}
   {% assign message = testimonial[1].message %}
