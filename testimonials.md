@@ -28,6 +28,16 @@ button:-moz-focusring {
 #hr:last-child {
   display: none;
 }
+.fa {
+  margin-left: -12px;
+  margin-right: 8px;
+}
+#submitbutton {
+  padding: 6px 24px;
+}
+fieldset {
+  border: 0px;
+}
 </style>
 <div class="w3-card w3-padding-24">
   <div class="w3-xxlarge">Testimonials</div><br>
@@ -53,8 +63,10 @@ button:-moz-focusring {
     <label>Testimonial<br><textarea id="message" name="fields[message]" rows="5"></textarea></label><br>
     <br>
     <label>Name<br><input type="text" id="name" name="fields[name]"></label><br>
-    <br>
-    <button type="submit">Submit Testimonial</button>
+    <div class="hidden js-notice w3-panel" style="margin: 16px; padding: 8px; font-size: 16px; display: inline-block; max-width: 570px">
+      <span class="js-notice-text"></span>
+    </div>
+    <fieldset><button id="submitbutton" type="submit">Submit Testimonial</button></fieldset>
     </form>
   </div>
 </div>
@@ -71,4 +83,43 @@ button:-moz-focusring {
       btn.innerText = "Hide Testimonial Form";
     }
   }
+</script>
+<script>
+(function ($) {
+  $('form').submit(function () {
+    var form = this;
+    $(form).addClass('disabled');
+    $("#submitbutton").css({"padding":"6px 24px"});
+    var submitbutton = document.getElementById("submitbutton");
+    submitbutton.innerHTML = '<i class="fa fa-spinner fa-spin"></i>Loading...';
+    $('form .js-notice').removeClass('w3-pale-green').removeClass('w3-pale-red').addClass('w3-pale-yellow');
+    showAlert('Please wait for some seconds...');
+    $.ajax({
+      type: $(this).attr('method'),
+      url: $(this).attr('action'),
+      data: $(this).serialize(),
+      contentType: 'application/x-www-form-urlencoded',
+      success: function (data) {
+        $('#submitbutton').html('Submitted');
+        $('form .js-notice').removeClass('w3-pale-yellow').removeClass('w3-pale-red').addClass('w3-pale-green');
+        showAlert('<strong>Thank you for your testimonial.</strong> It will show on the site in some minutes.');
+        submitbutton.disabled = true;
+        submitbutton.style.cursor = 'not-allowed';
+        submitbutton.style.opacity = '0.66';
+      },
+      error: function (err) {
+        console.log(err);
+        $('#submitbutton').html('Submit Testimonial');
+        $('form .js-notice').removeClass('w3-pale-yellow').removeClass('w3-pale-green').addClass('w3-pale-red');
+        showAlert('<strong>There was an error with your submission.</strong> Please make sure you filled all required fields and try again.');
+        $(form).removeClass('disabled');
+      }
+    });
+    return false;
+  });
+  function showAlert(message) {
+    $('form .js-notice').removeClass('hidden');
+    $('form .js-notice-text').html(message);
+  }
+})(jQuery);
 </script>
