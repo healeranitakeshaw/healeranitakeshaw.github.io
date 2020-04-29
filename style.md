@@ -84,23 +84,6 @@ li {
     height: 98vh;
     z-index: 100;
 }
-#scroll_button {
-    display: none;
-    position: relative;
-    cursor: pointer;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 2px solid rgba(27,31,35,.15);
-    border-radius: 64px;
-    box-shadow: 0 1px 15px rgba(27,31,35,.15);
-    width: 48px;
-    height: 48px;
-    text-align: center;
-    color: #b15fb3;
-}
-#scroll_button:hover {
-    color: #b15fb3;
-}
 /* source: https://fettblog.eu/blog/2013/06/16/preserving-aspect-ratio-for-embedded-iframes/ */
 .iframecontainer {
     position: relative;
