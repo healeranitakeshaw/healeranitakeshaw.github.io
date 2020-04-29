@@ -12,6 +12,8 @@ layout: null
   <div class="w3-xlarge">Healer · Yogini · Lifecoach</div>
 </div>
 <br>
+{% include_relative livesession.md %}
+<br>
 {% include_relative latestvideo.md %}
 <br>
 {% include_relative about.md %}
