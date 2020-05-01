@@ -13,7 +13,7 @@
     <ul>
       <li>Eyes are windows to the soul. With deep understanding of your subconscious I will help you with your problem.</li>
       <li>I will point you to the roots of your troubles, giving you insights about your conditioning, mental loops and harmful patterns.</li>
-      <li>I will give you steps, methods and techniques to overcome them.</li>
+      <li>I will give you steps, methods, tools and techniques to overcome them.</li>
     </ul>
   </div>
 </div>
