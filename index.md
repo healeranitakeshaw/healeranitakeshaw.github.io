@@ -2,7 +2,7 @@
 layout: null
 ---
 {% include_relative header.md %}
-<title>Healer Anita Keshaw | Website of Healer Anita Keshaw</title>
+<title>Healer Anita Keshaw</title>
 {% include_relative style.md %}
 </head>
 <body>
