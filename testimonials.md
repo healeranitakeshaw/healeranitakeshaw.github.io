@@ -1,17 +1,18 @@
 <style>
 textarea, input {
-  margin: 10px;
+  margin-top: 5px;
+  margin-bottom: 10px;
   width: 98%;
+  max-width: 570px;
 }
 textarea, button, input {
   font-size: 16px;
 }
-textarea {
-  max-width: 570px;
-  resize: vertical;
+button {
+  margin: 10px;
 }
-input {
-  max-width: 350px;
+textarea {
+  resize: vertical;
 }
 #testimonialform {
   display: none;
@@ -36,8 +37,9 @@ hr:last-child {
 #submitbutton {
   padding: 6px 24px;
 }
-fieldset {
-  border: 0px;
+form label {
+  display: block;
+  margin-top: 10px;
 }
 </style>
 <div class="w3-card w3-padding-24">
@@ -54,25 +56,25 @@ fieldset {
     <!--{{ date | date: '%a %-d %b %Y @%H:%M' }}-->
     <hr>
   {% endfor %}
-  </div>
-  <br>
+  </div><br>
   <button id="btn-toggle" onclick="toggle_formvisibility()">Write Testimonial</button>
   <div class="w3-large fontgrey" id="testimonialform">
     <form method="post" action="https://staticmaninstance.herokuapp.com/v2/entry/healeranitakeshaw/healeranitakeshaw.github.io/master/testimonials">
     <!--<input name="options[redirect]" type="hidden" value="https://healeranitakeshaw.com/">-->
-    <br>
-    <label>Testimonial<br><textarea id="message" name="fields[message]" rows="5"></textarea></label><br>
-    <br>
-    <label>Name<br><input type="text" id="name" name="fields[name]"></label><br>
-    <div class="hidden js-notice w3-panel" style="margin: 16px; padding: 8px; font-size: 16px; display: inline-block; max-width: 570px">
+    <label for="message">Testimonial</label>
+    <textarea id="message" name="fields[message]" placeholder="Your testimonial" rows="5"></textarea>
+    <label for="name">Name</label>
+    <input type="text" id="name" name="fields[name]" placeholder="Your name">
+    <label for="accountlink">Social Media Account</label>
+    <input type="text" id="accountlink" name="fields[accountlink]" placeholder="For example https://www.instagram.com/healeranitakeshaw">
+    <div><div class="hidden js-notice w3-panel" style="margin: 16px; padding: 8px; font-size: 16px; display: inline-block; max-width: 570px">
       <span class="js-notice-text"></span>
-    </div>
+    </div></div>
     <input type="hidden" name="options[reCaptcha][siteKey]" value="6LdYWPUUAAAAAJo4CvXHCCx6HChpABTX-23qpQI1">
     <input type="hidden" name="options[reCaptcha][secret]" value="TCK/RdI/T6mEQ+r0bSAdCnaj+4LLyYwq+wVk1eS6WRv2g/RqXzI3N1V2/ceqvKCZAeqpCHOQx6FM/SsOBvM+BYypMfd8idEyQJdmhyybqDfb9RZLciLQnP1CGZG3TeVauJw6+6W4xOLQz/cBGBVu/xj8pWgWsjuMoHsAcgkhX2sr5pUaXMt4DRuNhHtEr3hLlgEK4YTGU09RSjxfZ7Xs0F+6csiZDxYhStNgwGcJyKXhuer14jeH/iBpZ1wVYq0X+U3U89lzRG2hasqR7F+J9Pb1h3xaSB3NW2Z19sueSN+kN5WWrxIlkm26/0vWFS5QY7tdGHpLPIqxtS166j/iZF4QuFQNu0Hnbr4C4Y9aLZs32hCT+y6MRpjGCBj74l9Nd6xwNlkMhosrIslq62LoT1etYsnC3z5JFwPauCNQDNNL9Lx0SPXh36p/3AgkJ0LJbq0K/Drh5mbrDmfnevLqK0kCrJlLyFdv6zfvvQXyt2leyDRgkLGT06fVZ4y604YYul30DDbK5exy44ApsNh4u7Dwm7NfaMiEjRIi95esYuI1oEGQS5areuCFme4xwmWmjs6GIaNyCubWspO79Srr9boXIflBRPuKatHaHHsaiVJkwXhsnZUCeFwqtR7s1p1JPdHhMWkr4zc0L8fn5LP1bFtRIdDLWfGGWzrYTrOF1YY=">
     <div class="g-recaptcha" data-sitekey="6LdYWPUUAAAAAJo4CvXHCCx6HChpABTX-23qpQI1"></div>
     <script src='https://www.google.com/recaptcha/api.js'></script>
-    <br>
-    <fieldset><button id="submitbutton" type="submit">Submit Testimonial</button></fieldset>
+    <br><button id="submitbutton" type="submit">Submit Testimonial</button>
     </form>
   </div>
 </div>

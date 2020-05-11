@@ -1,6 +1,6 @@
 # based on https://github.com/eduardoboucas/staticman/blob/master/staticman.sample.yml
 testimonials:
-  allowedFields: ["name", "email", "message"]
+  allowedFields: ["name", "email", "message", "accountlink"]
   branch: "master"
   commitMessage: "Add new testimonial submitted on {@date:ddd D MMM YYYY [at] HH:mm} by {fields.name}"
   filename: "{@date:YYYYMMDDHHmm}"
@@ -12,7 +12,7 @@ testimonials:
         format: "iso8601"
   moderation: false
   path: "_data/testimonials/"
-  requiredFields: ["name", "message"]
+  requiredFields: ["name", "message", "accountlink"]
   reCaptcha:
     enabled: true
     siteKey: "6LdYWPUUAAAAAJo4CvXHCCx6HChpABTX-23qpQI1"

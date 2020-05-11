@@ -24,5 +24,7 @@ layout: null
 <br>
 {% include_relative contact.md %}
 <br>
+{% include_relative testimonials.md %}
+<br>
 </body>
 </html>
