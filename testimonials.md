@@ -50,9 +50,10 @@ form label {
     {% assign name = testimonial[1].name %}
     {% assign date = testimonial[1].date %}
     {% assign message = testimonial[1].message %}
+    {% assign accountlink = testimonial[1].accountlink %}
     {{ message }}
     <br>
-    <div style="font-size: 14px">{{ name }} ~ {{ date | date: '%a %-d %b %Y' }}</div>
+    <div style="font-size: 14px"><a href="{{ accountlink }}">{{ name }}</a> ~ {{ date | date: '%a %-d %b %Y' }}</div>
     <!--{{ date | date: '%a %-d %b %Y @%H:%M' }}-->
     <hr>
   {% endfor %}
