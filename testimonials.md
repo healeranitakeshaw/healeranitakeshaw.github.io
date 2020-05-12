@@ -44,7 +44,7 @@ form label {
 </style>
 <div class="w3-card w3-padding-24">
   <div class="w3-xxlarge">Testimonials</div><br>
-  <div class="w3-large fontgrey">
+  <div class="w3-large fontgrey" style="font-size:15px!important;text-align:justify">
   {% assign testimonials = site.data.testimonials | sort: date %}
   {% for testimonial in testimonials reversed %}
     {% assign name = testimonial[1].name %}
