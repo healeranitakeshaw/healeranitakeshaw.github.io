@@ -19,22 +19,22 @@ function countdown(servertime) {
 
   var x = setInterval(function() {
     var localtime = moment() + offset;
-    var distance = (todaylivedate - localtime) / 1000;
+    var distance_in_seconds = (nextlivedate - localtime) / 1000;
 
     // if today live date is in past, count down to tomorrow live date
-    if (distance / 60 < -10) {
-      nextlivedate = moment.tz(moment().format('YYYY-MM-DD') + ' ' + livetimestr, "Europe/Berlin").add(1, 'd');
-      distance = (nextlivedate - localtime) / 1000;
+    if (distance_in_seconds / 60 < -10) {
+      nextlivedate = nextlivedate.add(1, 'd');
+      distance_in_seconds = (nextlivedate - localtime) / 1000;
     }
     var localtimezoneabbr = moment.tz(moment.tz.guess()).format('z');
     nextlivedateelem.innerHTML = nextlivedate.local().format('ddd D MMM HH:mm ') + localtimezoneabbr;
 
-    var totalminutes = Math.floor(distance / 60);
+    var totalminutes = Math.floor(distance_in_seconds / 60);
 
     // live today: Live in hh:mm:ss
     if (totalminutes >= 0) {
-      var totalhours = Math.floor(distance / 60 / 60);
-      var totalseconds = Math.floor(distance);
+      var totalhours = Math.floor(distance_in_seconds / 60 / 60);
+      var totalseconds = Math.floor(distance_in_seconds);
       minutesstring = ("0" + (totalminutes % 60)).slice(-2);
       secondsstring = ("0" + (totalseconds % 60)).slice(-2);
       var s = 'Live in ';
