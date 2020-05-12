@@ -28,21 +28,20 @@ function countdown(servertime) {
     }
     var localtimezoneabbr = moment.tz(moment.tz.guess()).format('z');
     nextlivedateelem.innerHTML = nextlivedate.local().format('ddd D MMM HH:mm ') + localtimezoneabbr;
-    //nextlivedateelem.innerHTML = '(' + nextlivedate.local().format('ddd D MMM HH:mm ') + localtimezoneabbr + ')';
 
-    var totalhours = Math.floor(distance / 60 / 60);
     var totalminutes = Math.floor(distance / 60);
 
-    // live today in more than an hour: Live in x hours
-    if (totalhours >= 1) {
-      liveinelem.innerHTML = 'Live in ' + totalhours + ' hour';
-      liveinelem.innerHTML += (totalhours > 1) ? 's' : '';
-    }
-    // live today in less than an hour: Live in hh:mm
-    else if (totalminutes >= 0) {
+    // live today: Live in hh:mm:ss
+    if (totalminutes >= 0) {
+      var totalhours = Math.floor(distance / 60 / 60);
       var totalseconds = Math.floor(distance);
+      minutesstring = ("0" + (totalminutes % 60)).slice(-2);
       secondsstring = ("0" + (totalseconds % 60)).slice(-2);
-      liveinelem.innerHTML = 'Live in ' + totalminutes + ":" + secondsstring;
+      var s = 'Live in ';
+      s += (totalhours > 0) ? (totalhours + ':') : '';
+      s += (totalhours > 0) ? minutesstring : (totalminutes % 60);
+      s += ':' + secondsstring;
+      liveinelem.innerHTML = s;
     }
     // live now: Live now
     else if (totalminutes >= -10) {
