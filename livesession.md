@@ -7,6 +7,7 @@ function countdown(servertime) {
   var servertime = moment(servertime);
   var offset = moment(servertime) - moment();
   var livetimestr = '16:00';
+  var liveduration_in_minutes = 10;
 
   //document.getElementById("servertime").innerHTML = moment(servertime);
   //document.getElementById("localtime").innerHTML = moment();
@@ -21,8 +22,8 @@ function countdown(servertime) {
     var localtime = moment() + offset;
     var distance_in_seconds = (nextlivedate - localtime) / 1000;
 
-    // if today live date is in past, count down to tomorrow live date
-    if (distance_in_seconds / 60 < -10) {
+    // if next live date is in past, count down to next day live date
+    if (distance_in_seconds / 60 < -liveduration_in_minutes) {
       nextlivedate = nextlivedate.add(1, 'd');
       distance_in_seconds = (nextlivedate - localtime) / 1000;
     }
@@ -31,7 +32,7 @@ function countdown(servertime) {
 
     var totalminutes = Math.floor(distance_in_seconds / 60);
 
-    // live today: Live in hh:mm:ss
+    // live in next 24 hours: Live in hh:mm:ss
     if (totalminutes >= 0) {
       var totalhours = Math.floor(distance_in_seconds / 60 / 60);
       var totalseconds = Math.floor(distance_in_seconds);
@@ -43,12 +44,12 @@ function countdown(servertime) {
       s += ':' + secondsstring;
       liveinelem.innerHTML = s;
     }
-    // live now: Live now
-    else if (totalminutes >= -10) {
+    // live now (for 10 minutes): Live now
+    else if (totalminutes >= -liveduration_in_minutes) {
       liveinelem.innerHTML = 'Live now';
     }
-    // live ended: Live ended
-    else if (totalminutes < -10) {
+    // live ended (after 10 min): Live ended
+    else if (totalminutes < -liveduration_in_minutes) {
       liveinelem.innerHTML = 'Live ended';
     }
   }, 1000);
