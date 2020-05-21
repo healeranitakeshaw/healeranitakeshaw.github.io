@@ -3,13 +3,12 @@
 
 <script>
 
-function get_nextlivedate(localtime, livetimestr) {
-  //localtime = localtime.add(1, 'd');
+function get_nextlivedate(localtime, livetimestr, liveduration_in_minutes) {
   var todaylivedate = moment.tz(moment().format('YYYY-MM-DD') + ' ' + livetimestr, "Europe/Berlin");
   var nextlivedate = null;
   var todayweekday = localtime.isoWeekday();
-  var livetimehour = 17; //parseInt(livetimestr.slice(2));
-  var isbeforelifedatetime = localtime.get('hour') < livetimehour;
+  var localtimebuffer = localtime.add(-liveduration_in_minutes, 'm').format('HH:mm');
+  var isbeforelifedatetime = localtimebuffer < livetimestr;
   if (todayweekday == 0) { // sunday
     nextlivedate = todaylivedate.add(2, 'd');
   }
@@ -47,9 +46,8 @@ function get_nextlivedate(localtime, livetimestr) {
 function countdown(servertime) {
   var servertime = moment(servertime);
   var offset = servertime - moment();
-  //var localtime = moment().add(offset, 'ms');
 
-  var livetimestr = '17:00';
+  var livetimestr = '17:00'; // CEST/Germany/Berlin time
   var liveduration_in_minutes = 15;
 
   //document.getElementById("servertime").innerHTML = servertime;
@@ -60,7 +58,7 @@ function countdown(servertime) {
   var nextlivedateelem = document.getElementById("nextlivedate");
 
   var localtime = moment().add(offset, 'ms');
-  var nextlivedate = get_nextlivedate(localtime, livetimestr);
+  var nextlivedate = get_nextlivedate(localtime, livetimestr, liveduration_in_minutes);
 
   var x = setInterval(function() {
     var localtime = moment().add(offset, 'ms');
@@ -68,7 +66,7 @@ function countdown(servertime) {
 
     // if next live date is in past, count down to next day live date
     if (distance_in_seconds / 60 < -liveduration_in_minutes) {
-      nextlivedate = get_nextlivedate(localtime, livetimestr);
+      nextlivedate = get_nextlivedate(localtime, livetimestr, liveduration_in_minutes);
       distance_in_seconds = (nextlivedate - localtime) / 1000;
     }
     var localtimezoneabbr = moment.tz(moment.tz.guess()).format('z');
