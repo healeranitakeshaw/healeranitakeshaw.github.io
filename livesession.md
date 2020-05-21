@@ -8,7 +8,6 @@ function get_nextlivedate(localtime, livetimestr) {
   var todaylivedate = moment.tz(moment().format('YYYY-MM-DD') + ' ' + livetimestr, "Europe/Berlin");
   var nextlivedate = null;
   var todayweekday = localtime.isoWeekday();
-  //var todayweekday = moment().isoWeekday();
   var livetimehour = 17; //parseInt(livetimestr.slice(2));
   var isbeforelifedatetime = localtime.get('hour') < livetimehour;
   if (todayweekday == 0) { // sunday
@@ -48,6 +47,8 @@ function get_nextlivedate(localtime, livetimestr) {
 function countdown(servertime) {
   var servertime = moment(servertime);
   var offset = servertime - moment();
+  //var localtime = moment().add(offset, 'ms');
+
   var livetimestr = '17:00';
   var liveduration_in_minutes = 15;
 
@@ -55,10 +56,11 @@ function countdown(servertime) {
   //document.getElementById("localtime").innerHTML = moment();
   //document.getElementById("offset").innerHTML = " (" + offset + "ms)";
 
-  var localtime = moment().add(offset, 'ms');
-  var nextlivedate = get_nextlivedate(localtime, livetimestr);
   var liveinelem = document.getElementById("livein");
   var nextlivedateelem = document.getElementById("nextlivedate");
+
+  var localtime = moment().add(offset, 'ms');
+  var nextlivedate = get_nextlivedate(localtime, livetimestr);
 
   var x = setInterval(function() {
     var localtime = moment().add(offset, 'ms');
@@ -77,7 +79,7 @@ function countdown(servertime) {
 
     // live in more than 24 hours: Live in x days
     if (totalhours > 24) {
-      var totaldays = Math.floor(totalhours / 24);
+      var totaldays = (nextlivedate.isoWeekday() - localtime.isoWeekday() + 7) % 7;
       var s = 'Live in ' + totaldays + ' day';
       s += (totaldays > 0) ? 's' : ' ';
       liveinelem.innerHTML = s;
@@ -93,11 +95,11 @@ function countdown(servertime) {
       s += ':' + secondsstring;
       liveinelem.innerHTML = s;
     }
-    // live now (for 10 minutes): Live now
+    // live now (for x minutes): Live now
     else if (totalminutes >= -liveduration_in_minutes) {
       liveinelem.innerHTML = 'Live now';
     }
-    // live ended (after 10 min): Live ended
+    // live ended (after x min): Live ended
     else if (totalminutes < -liveduration_in_minutes) {
       liveinelem.innerHTML = 'Live ended';
     }
