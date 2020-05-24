@@ -9,7 +9,7 @@ function get_nextlivedate(localtime, livetimestr, liveduration_in_minutes) {
   var todayweekday = localtime.isoWeekday();
   var localtimebuffer = localtime.add(-liveduration_in_minutes, 'm').format('HH:mm');
   var isbeforelifedatetime = localtimebuffer < livetimestr;
-  if (todayweekday == 0) { // sunday
+  if (todayweekday % 7 == 0) { // sunday
     nextlivedate = todaylivedate.add(2, 'd');
   }
   if (todayweekday == 1) { // monday
