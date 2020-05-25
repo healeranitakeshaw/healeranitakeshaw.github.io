@@ -76,7 +76,7 @@ function countdown(servertime) {
     var totalhours = Math.floor(distance_in_seconds / 60 / 60);
 
     // live in more than 24 hours: Live in x days
-    if (totalhours > 24) {
+    if (totalhours >= 24) {
       var totaldays = (nextlivedate.isoWeekday() - localtime.isoWeekday() + 7) % 7;
       var s = 'Live in ' + totaldays + ' day';
       s += (totaldays > 1) ? 's' : '';
@@ -120,7 +120,7 @@ request.send(null);
 
 <div class="w3-card w3-padding-24 paddingbottom32" id="livesession">
   <div class="w3-xxlarge" style="font-size:32px!important">Live on Instagram</div>
-  <div class="w3-large" style="margin-top:10px"><center><div>Every Tuesday and Thursday</div>
+  <div class="w3-large" style="margin-top:10px"><center><div style="margin:7px 0">Every Tuesday and Thursday<br> 8:30 PM Indian Time</div>
   <a class="btn btn-lg btn-success" style="text-decoration:none;" href="https://www.instagram.com/healeranitakeshaw/">
   <i class="fa fa-instagram fa-2x" style="vertical-align:middle;padding-bottom:5px"></i><span id="livein" style="font-size:21px"></span></a><br>
   <div id="nextlivedate" style="font-size:17px"></div>
