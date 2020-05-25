@@ -66,8 +66,8 @@ form label {
     <textarea id="message" name="fields[message]" placeholder="Your testimonial" rows="5"></textarea>
     <label for="name">Name</label>
     <input type="text" id="name" name="fields[name]" placeholder="Your name">
-    <label for="accountlink">Social Media Account</label>
-    <input type="text" id="accountlink" name="fields[accountlink]" placeholder="Example: instagram.com/healeranitakeshaw" style="font-size:15px">
+    <label for="accountlink">Internet Profile Link</label>
+    <input type="text" id="accountlink" name="fields[accountlink]" placeholder="Example: www.healeranitakeshaw.com" style="font-size:15px">
     <div><div class="hidden js-notice w3-panel" style="margin: 16px; padding: 8px; font-size: 16px; display: inline-block; max-width: 570px">
       <span class="js-notice-text"></span>
     </div></div>

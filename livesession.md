@@ -122,7 +122,7 @@ request.send(null);
   <div class="w3-xxlarge" style="font-size:32px!important">Live on Instagram</div>
   <div class="w3-large" style="margin-top:10px"><center><div style="margin:7px 0">Every Tuesday and Thursday<br> 8:30 PM Indian Time</div>
   <a class="btn btn-lg btn-success" style="text-decoration:none;" href="https://www.instagram.com/healeranitakeshaw/">
-  <i class="fa fa-instagram fa-2x" style="vertical-align:middle;padding-bottom:5px"></i><span id="livein" style="font-size:21px"></span></a><br>
+  <i class="fa fa-instagram fa-2x" style="vertical-align:middle;padding-bottom:6px"></i><span id="livein" style="font-size:22px;margin-right:6px;"></span></a><br>
   <div id="nextlivedate" style="font-size:17px"></div>
   <div style="" id="servertime"></div>
   <div style="" id="localtime"></div>
