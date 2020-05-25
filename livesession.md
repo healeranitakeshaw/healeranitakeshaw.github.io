@@ -79,7 +79,10 @@ function countdown(servertime) {
     if (totalhours > 24) {
       var totaldays = (nextlivedate.isoWeekday() - localtime.isoWeekday() + 7) % 7;
       var s = 'Live in ' + totaldays + ' day';
-      s += (totaldays > 0) ? 's' : ' ';
+      s += (totaldays > 1) ? 's' : '';
+      if (totaldays == 1) {
+        s = 'Live tomorrow';
+      }
       liveinelem.innerHTML = s;
     }
     // live in next 24 hours: Live in hh:mm:ss
