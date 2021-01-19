@@ -12,7 +12,7 @@ testimonials:
         format: "iso8601"
   moderation: true
   path: "_data/testimonials/"
-  requiredFields: ["name", "message", "accountlink"]
+  requiredFields: ["name", "message"]
   reCaptcha:
     enabled: true
     siteKey: "6LdYWPUUAAAAAJo4CvXHCCx6HChpABTX-23qpQI1"
