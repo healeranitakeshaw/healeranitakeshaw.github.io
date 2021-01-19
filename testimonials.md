@@ -111,7 +111,7 @@ form label {
       success: function (data) {
         $('#submitbutton').html('Submitted');
         $('form .js-notice').removeClass('w3-pale-yellow').removeClass('w3-pale-red').addClass('w3-pale-green');
-        showAlert('<strong>Thank you for your testimonial.</strong> It will show on the site in some minutes.');
+        showAlert('<strong>Thank you for your testimonial.</strong> Once it has been checked it will appear here.');
         submitbutton.disabled = true;
         submitbutton.style.cursor = 'not-allowed';
         submitbutton.style.opacity = '0.66';
