@@ -58,10 +58,10 @@ form label {
     <hr>
   {% endfor %}
   </div><br>
+  <!--
   <button id="btn-toggle" onclick="toggle_formvisibility()">Write Testimonial</button>
   <div class="w3-large fontgrey" id="testimonialform">
     <form method="post" action="https://staticmaninstance.herokuapp.com/v2/entry/healeranitakeshaw/healeranitakeshaw.github.io/master/testimonials">
-    <!--<input name="options[redirect]" type="hidden" value="https://healeranitakeshaw.com/">-->
     <label for="message">Testimonial</label>
     <textarea id="message" name="fields[message]" placeholder="Your testimonial" rows="5"></textarea>
     <label for="name">Name</label>
@@ -77,7 +77,7 @@ form label {
     <script src='https://www.google.com/recaptcha/api.js'></script>
     <br><button id="submitbutton" type="submit">Submit Testimonial</button>
     </form>
-  </div>
+  </div>-->
 </div>
 <br>
 <script>
